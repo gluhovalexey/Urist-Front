@@ -1,0 +1,31 @@
+<div id="serviceEditWindow" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title"><b>Редактирование услуги</b></h3>
+				<span class="close" (click)="closeModal(false)"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+			</div>
+			<div class="modal-body" *ngIf="service">
+				<form *ngIf="serviceForm" сlass="form" [formGroup]="serviceForm" (ngSubmit)="onServiceFormSubmit($event.target.elements)">
+					<div class="form__field">
+						<input type="text" id="title" placeholder="Наименование категории" [formControl]="serviceForm.controls['title']">
+						<span *ngIf="!title.valid" class="form__error">Введите наименование услуги</span>
+					</div>
+					<div class="form__field">
+						<input type="text" id="price" placeholder="Наименование категории" [formControl]="serviceForm.controls['price']">
+						<span *ngIf="!price.valid" class="form__error">Введите стоимость</span>
+					</div>
+					<ul *ngIf="categories" class="category-list-form-input">
+						<li  *ngFor="let c of categoriesCtrl.controls; let i = index">
+							<input type="checkbox" id=e{{i}} data-value={{categories[i].slug}} data-toggle="toggle" [formControl]="c">
+							<label for=e{{i}}>{{ categories[i].title }}</label>
+						</li>
+					</ul>
+					<div class="text-center">
+						<button type="submit">Сохранить</button>					
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

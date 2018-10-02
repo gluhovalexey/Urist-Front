@@ -1,0 +1,55 @@
+<div class="flex-container">
+	<div class="flex-form">
+		<form *ngIf="serviceForm" class="form" [formGroup]="serviceForm" (ngSubmit)="onServiceFormSubmith($event.target.elements)">
+			<div class="form__field">
+				<input type="text" id="title" [formControl]="serviceForm.controls['title']">
+				<span *ngIf="!title.valid" class="form__error">Наименование услуги не указано</span>
+			</div>
+			<div class="form__field">
+				<input type="text" id="price" [formControl]="serviceForm.controls['price']">
+				<span *ngIf="!price.valid" class="form__error">Цена не указана</span>
+			</div>
+			<ul *ngIf="categories" class="category-list-form-input">
+				<li  *ngFor="let c of categoriesCtrl.controls; let i = index">
+					<input type="checkbox" id=u{{i}} data-value={{categories[i].slug}} data-toggle="toggle" [formControl]="c">
+					<label for=u{{i}}>{{ categories[i].title }}</label>
+				</li>
+			</ul>
+			<div class="text-center">
+				<button type="submit">Загрузить</button>				
+			</div>
+		</form>
+	</div>
+	<div class="flex-list">
+		<div class="services-list text-center">
+			<h4>Список юридических услуг</h4>
+			<h5>{{ errorMsg }}</h5>
+			<table *ngIf="services">
+				<tr *ngFor="let service of services; let num = index">
+					<td>
+						{{ num + 1 }} 
+					</td>
+					<td>
+						{{ service.title }}
+					</td>
+					<td>
+						{{ service.price }}р.
+					</td>
+					<td>
+						<button class="btn btn-edit" type="button" (click)="onEditService(true, service)"><i class="fa fa-file-text"></i></button>
+					</td>
+					<td>
+						<button class="btn btn-delete" type="button" (click)="onDeleteService(service.slug)"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<app-service-edit
+*ngIf="isModalWindowVisible" 
+[categories]="categories"
+[service]="service" 
+(modalWindowToggle)="modalWindowToggle($event)"
+(renderServiceList)="renderServiceList($event)">
+</app-service-edit>

@@ -1,0 +1,41 @@
+<div class="flex-container">
+	<div class="flex-form">
+		<form *ngIf="categoryForm" class="form" [formGroup]="categoryForm" (ngSubmit)="onCategoryFormSubmit($event.target.elements)">
+			<div class="form__field">
+				<input type="text" id="title" placeholder="Наименование категории" [formControl]="categoryForm.controls['title']">
+				<span *ngIf="!title.valid" class="form__error">Укажите наименование категории</span>
+			</div>
+			<div class="text-center">
+				<button type="submit">Создать</button>				
+			</div>
+		</form>
+	</div>
+	<div class="flex-list">
+		<div class="category-list text-center">
+			<h4>Список категорий права</h4>
+			<h5>{{ errorMsg }}</h5>
+			<table *ngIf="categoryList">
+				<tr *ngFor="let category of categoryList; let num = index">
+					<td>
+						{{ num + 1 }} 
+					</td>
+					<td>
+						{{ category.title }}
+					</td>
+					<td>
+						<button class="btn btn-edit" type="button" (click)="onEditCategory(true, category)"><i class="fa fa-file-text"></i></button>
+					</td>
+					<td>
+						<button class="btn btn-delete" type="button" (click)="onDeleteCategory(category.slug)"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<app-category-edit
+*ngIf="isModalWindowVisible"
+[category]="category"
+(modalWindowToggle)="modalWindowToggle($event)"
+(renderCategoryList)="renderCategoryList($event)">
+</app-category-edit>

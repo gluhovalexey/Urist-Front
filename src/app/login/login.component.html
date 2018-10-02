@@ -1,0 +1,26 @@
+<div id="loginWindow" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title"><b>Авторизация</b></h3>
+				<!-- <span class="close" (click)="closeModal(false)"><i class="fa fa-window-close" aria-hidden="true"></i></span> -->
+			</div>
+			<div class="modal-body">
+				<form *ngIf="loginForm" сlass="form" [formGroup]="loginForm" (ngSubmit)="onLoginFormSubmit($event.target.elements)">
+					<div class="form__field">
+						<input type="text" id="username" placeholder="Имя пользователя" [formControl]="loginForm.controls['username']">
+						<span *ngIf="!username.valid" class="form__error">Введите имя пользователя</span>
+					</div>
+					<div class="form__field">
+						<input type="password" id="password" placeholder="Пароль" [formControl]="loginForm.controls['password']">
+						<span *ngIf="!password.valid" class="form__error">Введите пароль</span>
+					</div>
+					<div class="text-center">
+						<button type="submit">Авторизоваться</button>					
+					</div>
+				</form>				
+					<div *ngIf="errorMsg" class="error-message">{{ errorMsg }}</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,52 @@
+<div class="flex-container">
+	<div class="flex-form">
+		<form *ngIf="fileForm" class="form" [formGroup]="fileForm" (ngSubmit)="onFormFileSubmith($event.target.elements)">
+			<div class="form__field">
+				<input type="file" id="file" [formControl]="fileForm.controls['file']">
+				<span *ngIf="!file.valid" class="form__error">Файл не выбран</span>
+			</div>
+			<div class="form__field">
+				<input type="text" id="fileName" [formControl]="fileForm.controls['fileName']">
+				<span *ngIf="!fileName.valid" class="form__error">Название документа не указано</span>
+			</div>
+			<ul *ngIf="categories" class="category-list-form-input">
+				<li  *ngFor="let c of categoriesCtrl.controls; let i = index">
+					<input type="checkbox" id=u{{i}} data-value={{categories[i].slug}} data-toggle="toggle" [formControl]="c">
+					<label for=u{{i}}>{{ categories[i].title }}</label>
+				</li>
+			</ul>
+			<div class="text-center">
+				<button type="submit">Загрузить</button>				
+			</div>
+		</form>
+	</div>
+	<div class="flex-list">
+		<div class="documents-list text-center">
+			<h4>Список документов судебной практики</h4>
+			<h5>{{ errorMsg }}</h5>
+			<table *ngIf="documents">
+				<tr *ngFor="let document of documents; let num = index">
+					<td>
+						{{ num + 1 }} 
+					</td>
+					<td>
+						{{ document.name }}
+					</td>
+					<td>
+						<button class="btn btn-edit" type="button" (click)="onEditDocument(true, document)"><i class="fa fa-file-text"></i></button>
+					</td>
+					<td>
+						<button class="btn btn-delete" type="button" (click)="onDeleteDocument(document.slug)"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<app-document-edit
+*ngIf="isModalWindowVisible" 
+[categories]="categories" 
+[document]="document" 
+(modalWindowToggle)="modalWindowToggle($event)"
+(renderDocumentList)="renderDocumentList($event)">
+</app-document-edit>

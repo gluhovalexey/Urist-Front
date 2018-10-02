@@ -1,0 +1,21 @@
+<div id="categoryEditWindow" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title"><b>Редактирование категории</b></h3>
+				<span class="close" (click)="closeModal(false)"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+			</div>
+			<div class="modal-body" *ngIf="category">
+				<form сlass="form" [formGroup]="categoryForm" (ngSubmit)="onCategoryFormSubmit($event.target.elements)">
+					<div class="form__field">
+						<input type="text" id="title" placeholder="Наименование категории" [formControl]="categoryForm.controls['title']">
+						<span *ngIf="!title.valid" class="form__error">Введите наименование категории</span>
+					</div>
+					<div class="text-center">
+						<button type="submit">Сохранить</button>					
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

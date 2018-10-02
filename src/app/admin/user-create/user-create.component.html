@@ -1,0 +1,51 @@
+<div class="flex-container">
+	<div class="flex-form">
+		<form *ngIf="userForm" class="form" [formGroup]="userForm" (ngSubmit)="onUserFormSubmit($event.target.elements)">
+			<div class="form__field">
+				<input type="text" id="username" placeholder="Имя пользователя" [formControl]="userForm.controls['username']">
+				<span *ngIf="!username.valid" class="form__error">Укажите имя пользователя</span>
+			</div>
+			<div class="form__field">
+				<input type="email" id="email" placeholder="Электронная почта" [formControl]="userForm.controls['email']">
+				<span *ngIf="!email.valid" class="form__error">Укажите электронную почту</span>
+			</div>
+			<ul>
+				<li>
+					<input type="checkbox" id="is_active" [formControl]="userForm.controls['is_active']">
+					<label for="is_active">Пользователь включен</label>
+				</li>
+			</ul>
+			<div class="text-center">
+				<button type="submit">Создать</button>				
+			</div>
+		</form>
+	</div>
+	<div class="flex-list">
+		<div class="user-list text-center">
+			<h4>Список пользователей</h4>
+			<h5>{{ errorMsg }}</h5>
+			<table *ngIf="users">
+				<tr *ngFor="let user of users; let num = index">
+					<td>
+						{{ num + 1 }} 
+					</td>
+					<td>
+						{{ user.username }}
+					</td>
+					<td>
+						<button class="btn btn-edit" type="button" (click)="onEditUser(true, user)"><i class="fa fa-file-text"></i></button>
+					</td>
+					<td>
+						<button class="btn btn-delete" type="button" (click)="onDeleteUser(category.id)"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<!-- <app-category-edit
+*ngIf="isModalWindowVisible"
+[category]="category"
+(modalWindowToggle)="modalWindowToggle($event)"
+(renderCategoryList)="renderCategoryList($event)">
+</app-category-edit> -->

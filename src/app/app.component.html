@@ -1,0 +1,12 @@
+<header *ngIf="!regex.test(router.url)">
+    <div class="flex-container-header">
+      <img class="image" src="./assets/i/mgsu.png" alt="Московский государственный строительный университет">
+      <img src="./assets/i/bull_court.png" alt="Правда побеждает">
+      <img class="" src="./assets/i/msu.png" alt="МГУ имени М.В. Ломоносова">
+          <div class="contacts">
+            <div class="contacts-header" (click)="onClickContactsHeader()">Контакты</div>
+            <div class="contacts-phones" [ngClass]="phonesShow ? 'hidden'  : 'show'">+7 (916) 608-37-61<br>+7 (915) 061-98-75</div>
+          </div>
+    </div>
+</header>
+<router-outlet></router-outlet>
