@@ -7,10 +7,8 @@ import {
 } from '@angular/core';
 
 import { 
-	FormControl, 
 	FormGroup, 
-	FormBuilder, 
-	FormArray,
+	FormBuilder,
 	Validators,
     AbstractControl
 } from '@angular/forms';
@@ -69,9 +67,14 @@ export class CategoryEditComponent implements OnInit {
 	 	}
 	 	});
 	
- 		this.onEditCategory(data)
+ 		this.onEditCategory(data);
 	}
-
+	
+	/**
+	 * 
+	 * [onEditCategory description]
+	 * @param {[type]} data [description]
+	 */
 	private onEditCategory(data): void {
 				
 	this.categoryForm.valid && this.adminService.editCategory(data, this.category.slug).subscribe(

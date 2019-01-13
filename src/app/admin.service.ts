@@ -208,12 +208,67 @@ export class AdminService {
         return this.queryGet(`/api/user/list`).map(responce => {
             return <any>responce['result'].map(item => {
                 return new User({
+                    id: item.id,
                     username: item.username,
                     email: item.email,
                     is_active: item.is_active
                 });
             });
         });
+    }
+
+    /**
+     * [createUser создание пользователя]
+     * @param  {[type]}             data [данные пользователя]
+     * @return {Observable<Object>}      [поток]
+     */
+    createUser(data): Observable<Object> {
+        return this.queryPost(`/api/user/create`, JSON.stringify(data)).map(responce => { return responce });
+    }
+
+    /**
+     * [deleteUser Удаление пользователя]
+     * @param {[type]} id [шid пользователя]
+     */
+    deleteUser(id) {
+        let queryUrl = `/api/user/delete/${id}`;
+
+        return this.queryDelete(queryUrl).map( responce => { return responce });
+    }
+
+    /**
+     * [uploadFile Загрузка сертификата на сервер]
+     * @param  {File}               fileToUpload     [файл]
+     * @param  {fileName}             fileName       [имя файла]
+     * @return {Observable<Object>}                  [ответ сервера]
+     */
+    uploadCertificate(fileToUpload: File, fileName: string): Observable<Object> {
+        const formData: FormData = new FormData();
+        formData.append('file', fileToUpload, fileName);
+
+        return this.queryPost(`/api/certificate/upload`, formData).map(responce => { return responce });
+    }
+
+    /**
+     * [editCertificate редактирование сертификата]
+     * @param {Array<any>} data [данные формы]
+     * @param {[string]}     slug [slug идентификатор]
+     * @return {[Object]} responce [ответ сервера]
+     */
+    editCertificate(data: Array<any>, slug)
+    {
+        return this.queryPut(`/api/certificate/edit/${slug}`, JSON.stringify(data)).map(response => { return  response });
+    }
+
+    /**
+     * [deleteCertificate удаление сертификата]
+     * @param {[string]} slug [slug идентификатор]
+     * @return {[Object]} response [ответ сервера]
+     */
+    deleteCertificate(slug) {
+        let queryUrl = `/api/certificate/delete/${slug}`;
+
+        return this.queryDelete(queryUrl).map( responce => { return responce });
     }
 
     /**

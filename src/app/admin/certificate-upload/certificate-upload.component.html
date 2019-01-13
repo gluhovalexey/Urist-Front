@@ -1,0 +1,45 @@
+<div class="flex-container">
+	<div class="flex-form">
+		<form *ngIf="certificateForm" class="form" [formGroup]="certificateForm" (ngSubmit)="onCertificateFormSubmit($event.target.elements)">
+			<div class="form__field">
+				<input type="file" id="file" [formControl]="certificateForm.controls['file']">
+				<span *ngIf="!file.valid" class="form__error">Файл не выбран</span>
+			</div>
+			<div class="form__field">
+				<input type="text" id="fileName" [formControl]="certificateForm.controls['fileName']">
+				<span *ngIf="!fileName.valid" class="form__error">Название сертификата не указано</span>
+			</div>
+			<div class="text-center">
+				<button type="submit">Загрузить</button>				
+			</div>
+		</form>
+	</div>
+	<div class="flex-list">
+		<div class="certificates-list text-center">
+			<h4>Список сертификатов</h4>
+			<h5>{{ errorMsg }}</h5>
+			<table *ngIf="certificates">
+				<tr *ngFor="let certificate of certificates; let num = index">
+					<td>
+						{{ num + 1 }} 
+					</td>
+					<td>
+						{{ certificate.name }}
+					</td>
+					<td>
+						<button class="btn btn-edit" type="button" (click)="onEditCertificate(true, certificate)"><i class="fa fa-file-text"></i></button>
+					</td>
+					<td>
+						<button class="btn btn-delete" type="button" (click)="onDeleteCertificate(certificate.slug)"><i class="fa fa-trash"></i></button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>
+<app-certificate-edit
+*ngIf="isModalWindowVisible" 
+[certificate]="certificate" 
+(modalWindowToggle)="modalWindowToggle($event)"
+(renderCertificateList)="renderCertificateList($event)">
+</app-certificate-edit>

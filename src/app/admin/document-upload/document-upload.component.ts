@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {
     FormBuilder,
     FormGroup,
@@ -7,7 +7,7 @@ import {
     FormArray
 } from '@angular/forms';
 import { AdminService } from '../../admin.service';
-import { UristService } from '../../urist.service';
+import { UristService, DOCUMENT_WEB_PATH } from '../../urist.service';
 import { CategoryList} from '../../category-list.model';
 import { Document } from '../../document.model';
 
@@ -29,7 +29,8 @@ export class DocumentUploadComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private adminService: AdminService,
-        private uristService: UristService
+        private uristService: UristService,
+        @Inject(DOCUMENT_WEB_PATH) private webPath: string
         ) {}
 
     ngOnInit() {
@@ -62,7 +63,10 @@ export class DocumentUploadComponent implements OnInit {
         get categoriesCtrl() {
          return this.fileForm.get('categoriesCtrl') as FormArray;
     }
-
+    /**
+     * [buildCategoriesForm Создание форм с checkbox категориями]
+     * @param {[type]} categories [массив с категориями]
+     */
     buildCategoriesForm(categories){         
          const arr = categories.map(element =>{
              return this.fb.control(false);
@@ -70,6 +74,18 @@ export class DocumentUploadComponent implements OnInit {
 
          return this.fb.array(arr);
     }
+    /**
+     * [onFileChange Событие выбора файла]
+     * @param {[type]} event [событие]
+     */
+    onFileChange(event) {       
+        let origFileName = event.target.files && event.target.files[0].name;
+        let extensionIndex = origFileName && origFileName.lastIndexOf('.');
+        let fileName = ( origFileName && extensionIndex && origFileName.substring(0, extensionIndex) ) || null;
+
+        this.fileName.setValue(fileName);
+    }
+
     /**
      * [onFormFileSubmith Обрабочтик нажатия кнопки сохранить]
      * @param {[type]} elements [элементы формы]

@@ -1,30 +1,30 @@
 
-  <button class="back-btn" (click)="goBack()">Назад</button>
-  <div *ngIf="category" class="flex-container-services-table">
-    <table *ngIf="category.services" class="services-list">
-      <caption>Перечень услуг</caption>
-      <tr>
-        <th>
-          Наименование
-        </th>
-        <th>
-          Стоимость
-        </th>
-      </tr>
-      <tr
-        *ngFor="let service of category.services"
-        >
-        <td>{{service.title}}</td>
-        <td>от {{service.price}} р.</td>
-      </tr>
-    </table>
-  </div>
-  <div *ngIf="category">
-    <h5>Здесь вы можете ознакомиться с судебной практикой раздела "{{category.title}}"</h5>
-    <div class="flex-container-services-documents">
-      <div *ngFor="let document of category.documents">
-        <span [ngClass]="'icon-' + document.path.substring( document.path.lastIndexOf( '.' ) + 1 )"></span>
-        <span><a href={{webPath}}{{document.path}}>{{document.name}}</a></span>
+<button class="back-btn" (click)="goBack()">Назад</button>
+<div *ngIf="category">
+   <div class="text-center">
+      <table *ngIf="category.services">
+         <caption>Перечень услуг</caption>
+         <tr>
+            <th>
+               Наименование
+            </th>
+            <th>
+               Стоимость
+            </th>
+         </tr>
+         <tr *ngFor="let service of category.services">
+            <td>{{service.title}}</td>
+            <td>от {{service.price}} р.</td>
+         </tr>
+      </table>
+   </div>
+   <div *ngIf="category.documents">
+      <h5>Здесь вы можете ознакомиться с судебной практикой раздела "{{category.title}}"</h5>
+      <div class="documents">      
+         <div *ngFor="let document of category.documents">
+            <span [ngClass]="'icon-' + document.path.substring( document.path.lastIndexOf( '.' ) + 1 )"></span>
+            <span><a href={{webPath}}{{document.path}} target="_blank">{{document.name}}</a></span>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
+</div>

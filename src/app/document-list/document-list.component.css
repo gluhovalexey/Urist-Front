@@ -1,15 +1,11 @@
-.flex-container-documents {
-	max-width: 1300px;
-	margin: 30px auto 0 auto;
-	line-height: 1.65;
-	padding: 20px 50px;
-	display: flex;
-	justify-content: space-between;
+.documents {	
+	display: inline;
 }
-.flex-container-documents span {
+.documents div {
+	display: inline-block;
+	margin:  10px;
+	max-width: 50%;
+}
+.documents span {
 	font-size: .9rem;
-	flex: 0.5;
-}
-.documents-header{
-	text-align: center;
 }

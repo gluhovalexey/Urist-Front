@@ -16,7 +16,7 @@ export class AppComponent {
 	public regex = /admin|login/;
 	public phonesShow: boolean = true;
 
-	constructor(private router: Router){}
+	constructor(public router: Router){}
 
 	ngOnInit() {}
 

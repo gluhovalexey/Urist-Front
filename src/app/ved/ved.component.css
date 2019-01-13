@@ -1,0 +1,26 @@
+.test-reports {
+	width: 70%;
+	display: table;
+	margin-top: 40px;
+}
+
+.test-reports>div {
+	width: 40%;
+	display: table-cell;
+}
+
+img {
+	width: 300px;
+	margin: 5px;
+}
+
+
+@media screen and (max-width: 700px) {
+	.test-reports>div {
+		width: 99%;
+		display: block;
+	}
+	img {
+		width: 99%;
+	}
+}

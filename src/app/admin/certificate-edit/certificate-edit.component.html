@@ -1,0 +1,21 @@
+<div id="certificateEditWindow" class="modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title"><b>Редактирование сертификата</b></h3>
+				<span class="close" (click)="closeModal(false)"><i class="fa fa-window-close" aria-hidden="true"></i></span>
+			</div>
+			<div class="modal-body" *ngIf="certificate">
+				<form *ngIf="certificateForm" сlass="form" [formGroup]="certificateForm" (ngSubmit)="onCertificateFormSubmit($event.target.elements)">
+					<div class="form__field">
+						<input type="text" id="name" placeholder="Название сертификата" [formControl]="certificateForm.controls['name']">
+						<span *ngIf="!name.valid" class="form__error">Введите название сертификата</span>
+					</div>
+					<div class="text-center">
+						<button type="submit">Сохранить</button>					
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

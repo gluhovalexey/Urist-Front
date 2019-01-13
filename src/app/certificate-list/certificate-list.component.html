@@ -1,0 +1,3 @@
+<div *ngIf="certificates">
+   	<a *ngFor="let certificate of certificates" href={{webPath}}{{certificate.path}} target="_blank"><img src={{webPath}}{{certificate.path}}></a>   	
+</div>

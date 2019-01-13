@@ -1,43 +1,133 @@
-.nav-bar {
-	width: 100%;
-	float: left;
-	margin: 0 0 3em 0;
-	padding: 0;
-	list-style: none;
-	background-color: #f2f2f2;
-/*	border-bottom: 1px solid #ccc;
-	border-top: 1px solid #ccc; */
+.tabs {
+	min-width: 320px;
+	max-width: 100%;
+	padding: 0px;
+	margin: 0 auto;
+	list-style: none;		
 }
 
-.nav-bar li {
-	float: left;
-	padding: 2px 1px;
+.tabs ul {
+	padding-left: 0px;
+	margin-bottom: 0px;
 }
 
-.nav-bar li a {
-	display: block;
-	padding: 8px 15px;
+.tabs ul li {
+	display: inline-block;
+	margin: 0 0 -1px;
+	padding: 15px 25px;
+	text-align: center;
+	border: 0px solid #ddd;
+	border-width: 1px 1px 1px 1px;
+	background: #f1f1f1;
+	border-radius: 3px 3px 0 0;
+}
+
+.tabs ul li:not(:last-child) {
+	margin-right: 4px;
+}
+
+a {
 	text-decoration: none;
-	font-weight: bold;
-	font-size: 1rem;
-	color: #069;
-	border-right: 1px solid #ccc;
-	border-bottom: 1px solid #ccc;
-	border-radius: 3px;
-	/*background-color: #f2f2f2;*/
+	color: #aaa;
+	font-weight: 600;
+	font-size: 14px;
 }
 
-.nav-bar li a:hover {
-	color: #c00;
-	background-color: #fff;
+a:before {
+	font-family: fontawesome;
+	font-weight: normal;
+	margin-right: 10px;		
 }
 
-.nav-bar-active {
-	color: #B22222 !important;
-	background-color: #e6e6e6;
-	/*-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
-	box-shadow: 0 5px 15px rgba(0, 0, 0, .5);*/
-	-webkit-box-shadow: 3px -4px 15px  rgba(0, 0, 0, .5);
-	box-shadow: 3px -4px 15px rgba(0, 0, 0, .5);
-	border-bottom: none;
+a:hover {
+	color: #888;
+	cursor: pointer;
+}
+
+a[tab-content="document"]:before {
+	content: "\f02d";
+}
+	
+a[tab-content="category"]:before {
+	content: "\f0ca";
+}
+
+a[tab-content="service"]:before {
+	content: "\f158";
+}
+
+a[tab-content="certificate"]:before {
+	content: "\f15c";
+}
+
+a[tab-content="certificate"]:before {
+		content: "\f0a3";
+
+}
+a[tab-content="user"]:before {
+	content: "\f007";
+}
+
+a[tab-content="utils"]:before {
+	content: "\f17a";
+}
+
+.tab-active {
+	border-top: 2px solid #d9534f!important;
+	border-bottom: 1px solid #fff!important;
+	background: #fff!important;
+}
+
+.tab-active > a {
+	color: #555;
+}
+
+.tab-content {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+@media screen and (max-width: 1210px) {
+	a {
+		font-size: 12px;
+	}
+	a:before {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	a {
+		font-size: 10px;
+	}
+	a:before {
+		font-size: 10px;
+	}
+}
+
+@media screen and (max-width: 940px) {
+	a {
+		font-size: 0;
+	}
+	a:before {
+		margin: 0;
+		font-size: 18px;
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.tabs ul li {
+		padding: 5px 15px;
+	}
+}
+
+@media screen and (max-width: 370px) {
+	.tabs ul li {
+		padding: 1px 9px;
+	}
+
+	a:before {
+		font-size: 10px;
+	}
 }

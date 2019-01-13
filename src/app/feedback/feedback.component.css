@@ -1,0 +1,277 @@
+.feedback button{
+	position: fixed;
+	right: 40px;
+	bottom: 30px;
+	animation: walk-cycle 11.2s linear infinite;
+	animation-delay: 11s;
+	bottom: 50px;
+	background-color: #ff4252;
+	border: 1px solid #b22222;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+	border-radius: 4px;
+	color: #000000;
+	width: 200px;
+	font-size: 14px;
+	text-align: center;
+	height: 30px; 
+	line-height: 20px;
+	margin-bottom: 10px;
+	padding: 4px 6px;
+	vertical-align: middle;
+	text-decoration: none;
+	cursor: pointer;
+	font-weight: bold;
+	outline: 0;
+	transition: all .5s ease-out;
+}
+
+.feedback button:hover {
+	background-color: #b22222;
+	color: #ffffff;
+}
+
+.feedback button i {
+	font-size: 0;
+}
+
+@media (max-width: 650px) {
+	.feedback button {
+		height: 50px;
+		width: 50px;
+		border-radius: 100%;
+		border-color: #ff4252;
+		font-size: 0;
+		right: 20px;
+		bottom: 20px;
+	}
+
+	.feedback button i {
+		color: #ffffff;
+		font-size: 23px;
+		margin-top: 5px;
+	}
+}
+
+@keyframes walk-cycle{
+	0% {bottom: 30px;}
+	3% {bottom: 70px;}
+	6% {bottom: 30px;}		
+	8% {
+		bottom: 50px;
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+	}
+	8.0000001%{
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+	}
+	8.03% {
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.54),
+		0 0 0 20px rgba(178, 34, 0, 0.54);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.54),
+		0 0 0 20px rgba(178, 34, 0, 0.54);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.54),
+		0 0 0 20px rgba(178, 34, 0, 0.54);
+	}
+	9% {
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.02),
+		0 0 0 20px rgba(178, 34, 0, 0.02);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.02),
+		0 0 0 20px rgba(178, 34, 0, 0.02);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.02),
+		0 0 0 20px rgba(178, 34, 0, 0.02);
+	}
+	10.7% {
+		bottom: 30px;
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.3),
+		0 0 0 20px rgba(178, 34, 0, 0.3);
+	}
+	20% {
+		-webkit-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+		-moz-box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+		box-shadow: 0 0 0 10px rgba(178, 34, 34, 0.2),
+		0 0 0 20px rgba(178, 34, 0, 0.2);
+	}
+	40% {
+		box-shadow: none;
+	}
+	100% {bottom: 30px;}
+}
+
+.modal {
+	position: fixed; /* фиксированное положение */
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8); /* цвет фона */
+	z-index: 1050;
+	opacity: 1; /* по умолчанию модальное окно прозрачно */
+	-webkit-transition: opacity 200ms ease-in; 
+	-moz-transition: opacity 200ms ease-in;
+	transition: opacity 200ms ease-in; /* анимация перехода */
+	pointer-events: auto; /* элемент видим для событий мыши */
+	overflow-y: auto; /* элемент невидим для событий мыши */
+	margin: 0;
+	padding: 0;
+}
+.modal-dialog {
+	position: relative;
+	width: auto;
+	margin: 10px;
+	top: 15%;
+}
+
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 700px;
+		margin: 30px auto;
+	}
+}
+
+/* свойства для блока, содержащего контент модального окна */
+.modal-content {
+	position: relative;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: .3rem;
+	outline: 0;
+}
+
+@media (min-width: 768px) {
+	.modal-content {
+		-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+		box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+	}
+}
+
+/* свойства для заголовка модального окна */
+.modal-header {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	padding: 15px 15px 15px 70px;
+	border-bottom: 1px solid #eceeef;
+}
+
+.modal-title {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 1.5;
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+/* свойства для кнопки "Закрыть" */
+.close {
+	float: right;
+	font-family: sans-serif;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+	text-decoration: none;
+}
+
+/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+.close:focus, .close:hover {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+	opacity: .75;
+}
+
+/* свойства для блока, содержащего основное содержимое окна */
+.modal-body {
+	position: relative;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1 1 auto;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 15px;
+	overflow: auto;
+}
+
+form {
+	display: inline-block;
+	padding: 25px;
+	width: 80%;
+}
+
+.form__field {
+	margin-bottom: 10px;
+}
+
+.form__error {
+	color: red;
+	text-align: left;
+	font-size: 12px;
+	display: block;
+	margin-top: 3px;
+	display: block;
+}
+
+input, textarea {	
+	outline: none;
+	display: block;
+	width: 100%;
+	border-radius: 2px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+	outline: 1px solid #ff4252!important;
+}
+
+button {
+	margin-top: 20px;
+	width: 70%;
+	padding: 10px;
+	border-radius: 2px;
+	border: 0;
+	background-color: #242323;
+	color: #fff;
+}
+
+button:hover {
+	background-color: #333333;
+}

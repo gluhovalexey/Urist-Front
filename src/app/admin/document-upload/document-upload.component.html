@@ -1,8 +1,8 @@
-<div class="flex-container">
-	<div class="flex-form">
+<div class="row">
+	<div class="document-form">
 		<form *ngIf="fileForm" class="form" [formGroup]="fileForm" (ngSubmit)="onFormFileSubmith($event.target.elements)">
 			<div class="form__field">
-				<input type="file" id="file" [formControl]="fileForm.controls['file']">
+				<input (change)="onFileChange($event)" type="file" id="file" [formControl]="fileForm.controls['file']">
 				<span *ngIf="!file.valid" class="form__error">Файл не выбран</span>
 			</div>
 			<div class="form__field">
@@ -20,32 +20,30 @@
 			</div>
 		</form>
 	</div>
-	<div class="flex-list">
-		<div class="documents-list text-center">
-			<h4>Список документов судебной практики</h4>
-			<h5>{{ errorMsg }}</h5>
-			<table *ngIf="documents">
-				<tr *ngFor="let document of documents; let num = index">
-					<td>
-						{{ num + 1 }} 
-					</td>
-					<td>
-						{{ document.name }}
-					</td>
-					<td>
-						<button class="btn btn-edit" type="button" (click)="onEditDocument(true, document)"><i class="fa fa-file-text"></i></button>
-					</td>
-					<td>
-						<button class="btn btn-delete" type="button" (click)="onDeleteDocument(document.slug)"><i class="fa fa-trash"></i></button>
-					</td>
-				</tr>
-			</table>
-		</div>
+	<div class="documents-list text-center">
+		<h4>Список документов судебной практики</h4>
+		<h5>{{ errorMsg }}</h5>
+		<table *ngIf="documents">
+			<tr *ngFor="let document of documents; let num = index">
+				<td>
+					{{ num + 1 }} 
+				</td>
+				<td>
+					<a href={{webPath}}{{document.path}} target="_blank">{{ document.name }}</a>
+				</td>
+				<td>
+					<button class="btn btn-edit" type="button" (click)="onEditDocument(true, document)"><i class="fa fa-file-text"></i></button>
+				</td>
+				<td>
+					<button class="btn btn-delete" type="button" (click)="onDeleteDocument(document.slug)"><i class="fa fa-trash"></i></button>
+				</td>
+			</tr>
+		</table>
 	</div>
 </div>
 <app-document-edit
-*ngIf="isModalWindowVisible" 
-[categories]="categories" 
+*ngIf="isModalWindowVisible"
+[categories]="categories"
 [document]="document" 
 (modalWindowToggle)="modalWindowToggle($event)"
 (renderDocumentList)="renderDocumentList($event)">

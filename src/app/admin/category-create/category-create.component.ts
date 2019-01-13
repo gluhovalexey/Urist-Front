@@ -4,7 +4,6 @@ import {
 	FormGroup,
 	Validators,
 	AbstractControl,
-	FormArray
 } from '@angular/forms';
 
 import { AdminService } from '../../admin.service';
@@ -61,8 +60,11 @@ export class CategoryCreateComponent implements OnInit {
 	
  		this.onCreateCategory(data)
 	}
-
-	    onCreateCategory(data: Object) {
+	/**
+	 * [onCreateCategory Создание категории]
+	 * @param {Object} data [description]
+	 */
+	onCreateCategory(data: Object) {
         this.categoryForm.valid && this.adminService.createCategory(data).subscribe(data => {
             this.categoryForm.reset();
             this.renderCategoryList();
@@ -70,7 +72,7 @@ export class CategoryCreateComponent implements OnInit {
     }
 
 	/**
-	 * [renderCategoryList Получает объект с категориями]
+	 * [renderCategoryList Получение списка категорий]
 	 */
 	renderCategoryList(): void {
 		this.errorMsg = null;
@@ -106,11 +108,10 @@ export class CategoryCreateComponent implements OnInit {
 	}
 
 	/**
-     * [modalWindowToggle переключатель модального окна]
-     * @param {boolean} switcher [переключатель состояния модального окна]
+     * [modalWindowToggle переключатель состояния модального окна]
+     * @param {boolean} switcher [флаг переключения]
      */
     modalWindowToggle(switcher: boolean) {
         this.isModalWindowVisible = switcher;
     }
-
 }

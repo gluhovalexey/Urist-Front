@@ -7,12 +7,13 @@ export class Utilities{
 	constructor(){}
 
 	/**
-    * [makeFormCheckBoxArray Утилита которая создает массив для формы checkbox из значений отмечено / не отмечено]
+    * [makeFormCheckBoxArray Утилита которая создает массив для формы из checkbox из значений отмечено / не отмечено]
     * @param {[array]} arrayPosibleVal [Массив всех возможных значений]
     * @param {[array]} arrayExistVal   [Массив имеющихся значений]
-    * @returns {[array]} formArray [массив из значений отмечено / не отмечено]
+    * @return {[array]} formArray [массив из значений отмечено / не отмечено]
     */
     makeFormCheckBoxArray(arrayPosibleValObj: Array<any>, arrayExistValObj: Array<any>){
+        console.log([arrayPosibleValObj, arrayExistValObj]);
     	let valuesExistArr = [];
     	let formArray: Array<boolean> = [];
     	arrayExistValObj.forEach(arr => {

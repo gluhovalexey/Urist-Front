@@ -15,8 +15,8 @@ import { User } from '../../user.model';
 	styleUrls: ['./user-create.component.css']
 })
 export class UserCreateComponent implements OnInit {
-	private users: User[];
-	private userForm: FormGroup;
+	users: User[];
+	userForm: FormGroup;
 	private username: AbstractControl;
 	private email: AbstractControl;
 	private isActive: AbstractControl;
@@ -58,15 +58,40 @@ export class UserCreateComponent implements OnInit {
 			});
 	}
 
-	onUserFormSubmit() {
+	onUserFormSubmit(elements) {
+		let data = {};
 
+		Object.keys(elements).forEach(key => {
+	 		let element = elements[key];	 	
+
+	 		switch (element.type) {
+	 			case "":
+	 				break;
+	 			case 'checkbox':
+	 			data[element.id] = element.checked ? true : false;
+	 				break;
+	 			default:
+	 			data[element.id] = element.value;
+	 				break;	 		
+	 	}
+	 	});
+		this.onCreateUser(data);
+	}
+
+	onCreateUser(data: Object) {
+		this.userForm.valid && this.adminService.createUser(data).subscribe(data => {
+            this.userForm.reset();
+            this.renderUserList();
+        });
 	}
 
 	onEditUser() {
 
 	}
 
-	onDeleteUser() {
-		
+	onDeleteUser(id) {
+		this.adminService.deleteUser(id).subscribe(result => {
+			this.renderUserList();
+		});
 	}
 }

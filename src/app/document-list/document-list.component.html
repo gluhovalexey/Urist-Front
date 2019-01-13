@@ -1,10 +1,10 @@
 <button class="back-btn" (click)="goBack()">Назад</button>
 <div *ngIf="documents">
-  <h5 class="documents-header">Здесь вы можете ознакомиться со всей судебной практикой</h5>
-  <div class="flex-container-documents">
+  <h5 class="documents-header text-center">Здесь вы можете ознакомиться со всей судебной практикой</h5>
+  <div class="documents">
     <div *ngFor="let document of documents">
       <span [ngClass]="'icon-' + document.path.substring( document.path.lastIndexOf( '.' ) + 1 )"></span>
-      <span><a href={{webPath}}{{document.path}}>{{document.name}}</a></span>
+      <span><a href={{webPath}}{{document.path}} target="_blank">{{document.name}}</a></span>
     </div>
   </div>
 </div>

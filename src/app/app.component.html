@@ -1,12 +1,20 @@
-<header *ngIf="!regex.test(router.url)">
-    <div class="flex-container-header">
-      <img class="image" src="./assets/i/mgsu.png" alt="Московский государственный строительный университет">
-      <img src="./assets/i/bull_court.png" alt="Правда побеждает">
-      <img class="" src="./assets/i/msu.png" alt="МГУ имени М.В. Ломоносова">
-          <div class="contacts">
-            <div class="contacts-header" (click)="onClickContactsHeader()">Контакты</div>
-            <div class="contacts-phones" [ngClass]="phonesShow ? 'hidden'  : 'show'">+7 (916) 608-37-61<br>+7 (915) 061-98-75</div>
-          </div>
-    </div>
-</header>
-<router-outlet></router-outlet>
+<div class="container">
+	<div *ngIf="!regex.test(router.url)" class="header text-center">
+		<a href="http://mgsu.ru/" target="_blank"><img src="./assets/i/mgsu.png" alt="Московский государственный строительный университет"></a>
+		<a href=""><img src="./assets/i/bull_court.png" alt="Правда побеждает"></a>
+		<a href="https://www.msu.ru/" target="_blank"><img src="./assets/i/msu.png" alt="МГУ имени М.В. Ломоносова"></a>
+		<div class="contacts">
+			<div class="contacts-header" (click)="onClickContactsHeader()">Контакты</div>
+			<div class="contacts-phones" [ngClass]="phonesShow ? 'hidden'  : 'show'">
+				<div>
+					+7 (916) 608-37-61	
+				</div>
+				<div>
+					+7 (915) 061-98-75
+				</div>		
+			</div>
+		</div>
+	</div>
+	<router-outlet></router-outlet>
+	<app-feedback *ngIf="!regex.test(router.url)"></app-feedback>
+</div>

@@ -1,17 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import "../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";*/
 @font-face {
-    font-family:'RobotoR';
-    src:url(assets/fonts/Roboto/Roboto-Regular.ttf) format('ttf');
+  font-family:'RobotoR';
+  src:url(assets/fonts/Roboto/Roboto-Regular.ttf) format('ttf');
 }
 @font-face {
-    font-family:'RobotoB';
-    src:url(assets/fonts/Roboto/Roboto-Bold.ttf) format('ttf');
+  font-family:'RobotoB';
+  src:url(assets/fonts/Roboto/Roboto-Bold.ttf) format('ttf');
 }
 
 body {
 	font-family: 'RobotoR', sans-serif;
 	font-size: 1.3rem;
+  padding: 0;
+  margin: 0 50px;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    margin: 0 20px;
+  }
 }
 
 .icon-pdf {
@@ -19,4 +27,95 @@ body {
   width: 40px;
   height: 40px;
   display: inline-block;
+}
+
+.text-center {
+  text-align: center;
+  text-align: -moz-center;
+  text-align:-webkit-center;
+}
+
+li {
+  list-style: none;
+  font-size: 1.1rem;
+  padding-top: 5px;
+}
+
+label {
+  padding-left: 8px;
+}
+
+input, textarea {
+  margin: 10px;
+}
+
+.field-invalid {
+  position: absolute;
+  margin-top: 4%;
+  margin-left: 20%;
+  color: red;
+  width: 50%;
+  font-size: .9rem;
+}
+
+.back-btn {
+  background-color: #FFFFFF;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+  border-radius: 4px;
+  color: #555555;
+  width: 120px;
+  font-size: 14px;
+  text-align: center;
+  height: 30px; 
+  line-height: 20px;
+  margin-bottom: 10px;
+  padding: 4px 6px;
+  vertical-align: middle;
+  text-decoration: none;
+}
+
+.back-btn:hover, .back-btn:focus {
+ border-color: rgba(82, 168, 236, 0.8);
+ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+ outline: 0 none;
+}
+
+.flex-contaner {
+  display: flex;
+  margin: 10px auto;
+  max-width: 1300px;
+  flex-wrap: wrap;
+}
+
+
+.flex-row {
+  display: flex;
+  margin-bottom: 50px
+}
+
+.form__error {
+  color: red;
+  text-align: left;
+  font-size: 12px;
+  display: block;
+  margin-top: 3px;
+  display: block;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.row {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  margin: 30px auto;
+  width: 100%;
+  height: 1100px;
+  max-width: 1300px;
 }

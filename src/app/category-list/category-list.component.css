@@ -1,18 +1,19 @@
-#left-menu {
-    flex: 2;
-    justify-content: flex-start;
+
+ul {
+	padding-inline-start: 20px!important;
 }
-#left-menu li {
-    list-style: none;
-    font-size: 1.2rem;
+
+li {
+	list-style: none;
+	font-size: 1.2rem;
 }
 a:link {
-  color: #000000;
-  text-decoration: none;
+	color: #000000;
+	text-decoration: none;
 }
 a:hover {
-  color: #1a1a1a;
+	color: #cc0000!important;
 }
 a:visited {
-  color: #000000;
+	color: #000000;
 }

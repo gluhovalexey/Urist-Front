@@ -66,6 +66,7 @@ export class DocumentEditComponent implements OnInit {
 	 * [buildCategoriesForm создание формы checkbox]
 	 */
 	buildCategoriesForm(){
+		console.log(this.document)
 	 	const formArray = this.utilities.makeFormCheckBoxArray(this.categories, this.document.categories);
 	 	const arr = formArray.map(element =>{
 	 		return this.fb.control(element);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UristService } from '../urist.service';
-import { CategoryList } from './category-list.model';
+import { CategoryList } from '../category-list.model';
 
 @Component({
   selector: 'app-category-list',

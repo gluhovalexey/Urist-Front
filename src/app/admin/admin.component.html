@@ -1,10 +1,13 @@
-<ul class="nav-bar">
-	<li><a [routerLink]="['./document']" [routerLinkActive]="'nav-bar-active'">Документы судебной практики</a></li>
-	<li><a [routerLink]="['./category']" [routerLinkActive]="'nav-bar-active'">Категории права</a></li>
-	<li><a [routerLink]="['./service']" [routerLinkActive]="'nav-bar-active'">Услуги</a></li>
-	<li><a [routerLink]="['./user']" [routerLinkActive]="'nav-bar-active'">Пользователи</a></li>
-	<li><a [routerLink]="['./']">Инструменты</a></li>
-	<li><a [routerLink]="['./']">Чат</a></li>
-</ul>
-
-<router-outlet></router-outlet>
+<div class="tabs">
+	<ul>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="document" [routerLink]="['./document']">Документы судебной практики</a></li>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="category" [routerLink]="['./category']">Категории права</a></li>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="service" [routerLink]="['./service']">Услуги</a></li>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="certificate" [routerLink]="['./certificate']">Сертификаты</a></li>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="user" [routerLink]="['./user']">Пользователи</a></li>
+		<li [routerLinkActive]="'tab-active'"><a tab-content="utils" [routerLink]="['./utils']">Утилиты</a></li>
+	</ul>
+	<div class="tab-content">	
+		<router-outlet></router-outlet>
+	</div>
+</div>

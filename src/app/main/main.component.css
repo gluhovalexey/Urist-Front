@@ -1,90 +1,37 @@
-.flex-container-partners {
-	max-width: 1300px;
-	margin: 30px auto 0 auto;
-	line-height: 1.65;
-	padding: 20px 50px;
-	display: flex;
-	justify-content: center;
+.content {
+	width: 100%;
+	display: table;
+	margin-bottom: 70px 0;
 }
 
-.flex-container-partners > div {
-	padding: 0 20px;
+.content .right h4 {
+	color: #cc0000;
 }
 
+.left, .right {
+	width: 27%;
+	display: table-cell;
+	vertical-align: top;
+}
 
-.flex-container-content {
-	max-width: 1300px;
-	margin: 30px auto 0 auto;
-	line-height: 1.65;
-	padding: 20px 50px;
-	display: flex;
-	justify-content: space-between;
+.right ul {
+	padding-inline-start: 20px!important;
 }
-.flex-container-header {
-	max-width: 1300px;
-	margin: 30px auto 0 auto;
-	line-height: 1.65;
-	padding: 20px 50px;
-	display: flex;
-	flex-wrap: wrap;
-	/* justify-content: space-between; */
-}
-header > .flex-container div {
-	text-align: center;
-}
-header img {
+
+.center {
 	width: 50%;
-	height: 200px;
+	display: table-cell;
+	vertical-align: top;
 }
-.flex-container-contacts {
-	max-width: 1300px;
-	/* margin: 30px auto 0 auto; */
-	line-height: 1.65;
-	/* padding: 20px 50px; */
-	display: flex;
-	/* justify-content: flex-end; */
-}
-.contacts {
-	background-color: #bfbfbf;
-	width: 50%;
-	border: 2px solid #808080;
-	border-radius: 5px 5px 5px 5px;
-	/* border-radius: 5px 5px 20px 20px; */
-	margin: 10px 0 0 65%;
+
+.diplomas-list img {
+	height: 100px;
 	padding: 5px;
 }
-.contacts-header:focus + .contacts-phones {
-	transition: 1s;
-	display: block;
-}
-.contacts .contacts-phones {
-	display: none;
-}
 
-#right-menu {
-	flex: 1.5;
-	padding: 10px;
-	margin-bottom: 20px;
-}
-#right-menu li {
-	list-style: none;
-	font-size: 1rem;
-}
-#center-content {
-	flex: 5;
-	padding: 10px;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	margin-bottom: 20px;
-}
-#center-content img {
-	height: 100px;
-	width: auto;
-	padding: 10px;
-}
-
-a:visited {
-	color: #0000ee;
+@media screen and (max-width: 600px) {
+	.left, .content, .right {
+		display: block;
+		width: 95%;
+	}
 }

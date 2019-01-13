@@ -24,20 +24,19 @@ import { uristInjectables } from "./urist.injectables";
 import { AdminComponent } from './admin/admin.component';
 import { AUTH_PROVIDERS } from './auth.service';
 import { LoggedInGuard } from './logged-in.guard';
+import { CertificateListComponent } from './certificate-list/certificate-list.component';
+import { FeedbackComponent } from './feedback/feedback.component';
+import { VedComponent } from './ved/ved.component';
 
 // import { AuthGuard } from './auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
+  { path: 'ved', component: VedComponent },
   { path: 'category/:slug', component: CategoryComponent },
   { path: 'document/list', component: DocumentListComponent },
   { path: 'login', component: LoginComponent },
-  // { path: 'admin', component: AdminComponent, canActivate: [ LoggedInGuard ]},
-  { path: 'admin', 
-    component: AdminComponent,
-    canActivate: [ LoggedInGuard ],
-    children: childRoutes
-  },
+  { path: 'admin', component: AdminComponent, canActivate: [ LoggedInGuard ], children: childRoutes }
 ];
 @NgModule({
   declarations: [
@@ -46,7 +45,10 @@ const routes: Routes = [
     CategoryComponent,
     MainComponent,
     DocumentListComponent,
-    LoginComponent
+    LoginComponent,
+    CertificateListComponent,
+    FeedbackComponent,
+    VedComponent
   ],
   imports: [
     BrowserModule,
